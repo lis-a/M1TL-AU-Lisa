@@ -29,7 +29,7 @@ class View:
 
     def is_valid_alpha(self, input_string):
         """
-        Vérifie si la chaîne de caractères fournie contient uniquement des caractères alphabétiques (et des espaces).
+        Vérifie si la chaîne fournie est composée uniquement de lettres alphabétiques et d'espaces.
 
         Args:
             input_string (str): Chaîne de caractères à vérifier.
@@ -53,7 +53,7 @@ class View:
 
     def get_valid_date_input(self, prompt):
         """
-        Demande à l'utilisateur d'entrer une date au format JJ/MM/AAAA jusqu'à ce qu'une entrée valide soit fournie.
+        Demande à l'utilisateur d'entrer une date au format JJ/MM/AAAA.
 
         Args:
             prompt (str): L'invite affichée à l'utilisateur.
@@ -70,7 +70,7 @@ class View:
 
     def get_valid_alpha_input(self, prompt):
         """
-        Demande à l'utilisateur d'entrer une chaîne alphabétique jusqu'à ce qu'une entrée valide soit fournie.
+        Demande au user d'entrer une chaîne alphabétique jusqu'à ce qu'une entrée valide soit fournie.
 
         Args:
             prompt (str): L'invite affichée à l'utilisateur.
@@ -88,7 +88,8 @@ class View:
     def get_valid_int_input(self, prompt, default_value=None):
         """
         Demande à l'utilisateur d'entrer un entier jusqu'à ce qu'une entrée valide soit fournie.
-        Si l'utilisateur n'entre rien et qu'une valeur par défaut est fournie, renvoie cette valeur par défaut.
+        Si l'utilisateur n'entre rien et qu'une valeur par défaut est fournie,
+        renvoie cette valeur par défaut.
 
         Args:
             prompt (str): L'invite affichée à l'utilisateur.

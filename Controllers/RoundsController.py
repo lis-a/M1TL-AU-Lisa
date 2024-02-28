@@ -123,30 +123,30 @@ class RoundsController:
         tournament_id = self.tournamentView.select_tournament(tournaments)
 
         # Charger le tournoi sélectionné
-        selected_tournament = next((tournament for tournament in tournaments if tournament['id'] == tournament_id),
-                                   None)
-        if not selected_tournament:
+        selected_t = next((tournament for tournament in tournaments if tournament['id'] == tournament_id),
+                          None)
+        if not selected_t:
             print("Tournoi non trouvé.")
             return
 
-        if selected_tournament["current_round"] > selected_tournament["rounds"]:
+        if selected_t["current_round"] > selected_t["rounds"]:
             print("Tous les rounds du tournoi ont été joués. Le tournoi est terminé.")
             return
 
-        print(f"Vous avez sélectionné le tournoi {selected_tournament['name']}.")
+        print(f"Vous avez sélectionné le tournoi {selected_t['name']}.")
 
-        if not selected_tournament['round_list']:
-            players_for_round = self.shuffle_players_randomly(selected_tournament['player_list'])
+        if not selected_t['round_list']:
+            players_for_round = self.shuffle_players_randomly(selected_t['player_list'])
         else:
-            players_for_round = self.sort_players_by_score(selected_tournament['player_list'])
+            players_for_round = self.sort_players_by_score(selected_t['player_list'])
 
         pairs = self.matchController.create_match_pairs(players_for_round)
         matches = self.matchController.create_matches(pairs)
 
-        if not selected_tournament['round_list']:
+        if not selected_t['round_list']:
             current_round = 1
         else:
-            last_round = selected_tournament["round_list"][-1]["Round"]
+            last_round = selected_t["round_list"][-1]["Round"]
             current_round = last_round + 1
 
         print(f"Matches du Round {current_round}")
@@ -154,17 +154,17 @@ class RoundsController:
             print(match)
 
         match_results = self.get_match_results(matches, current_round)
-        self.update_player_scores(selected_tournament, match_results)
+        self.update_player_scores(selected_t, match_results)
 
         round_data = {
             "Round": current_round,
             "matches": match_results
         }
-        selected_tournament['round_list'].append(round_data)
-        selected_tournament["current_round"] += 1
+        selected_t['round_list'].append(round_data)
+        selected_t["current_round"] += 1
 
         # Update the tournament data in the file
-        self.tournament.update_tournament(selected_tournament)
+        self.tournament.update_tournament(selected_t)
 
         while True:
             user_choice = self.roundsView.ask_for_next_round()

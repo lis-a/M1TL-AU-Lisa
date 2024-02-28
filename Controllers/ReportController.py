@@ -50,7 +50,8 @@ class ReportController:
 
     def tournament_players_alphabetical(self):
         """
-        Charge la liste des joueurs pour un tournoi spécifique, triée par ordre alphabétique de nom puis de prénom.
+        Charge la liste des joueurs pour un tournoi spécifique,
+        triée par ordre alphabétique de nom puis de prénom.
         Returns:
             list: Liste des joueurs du tournoi triés par ordre alphabétique.
         """
@@ -70,7 +71,8 @@ class ReportController:
 
     def get_tournament_players_sorted(self, tournament_id):
         """
-        Charge et retourne la liste des joueurs pour un tournoi spécifié, triée par leur score en ordre décroissant.
+        Charge et retourne la liste des joueurs pour un tournoi spécifié,
+        triée par leur score en ordre décroissant.
         Args:
             tournament_id (int): L'ID du tournoi dont on souhaite obtenir la liste des joueurs.
         Returns:

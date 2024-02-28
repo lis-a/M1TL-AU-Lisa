@@ -12,8 +12,7 @@ Suivez ces étapes pour mettre en place l'environnement de développement :
 1. Clonez le dépôt :
 
 ```sh
-git clone https://github.com/8astien/OCR_P4/tree/main
-cd OCR_P4
+git clone https://github.com/lis-a/M1TL-AU-Lisa.git
 ```
 
 
@@ -50,3 +49,14 @@ flake8 --format=html --htmldir=rapport_flake8
 
 Ouvrez `rapport_flake8/index.html` dans votre navigateur pour voir le rapport.
 
+## Test du coverage
+
+```sh
+python3 -m pytest --cov -s
+```
+
+## Lancement des tests
+
+```sh
+python3 -m pytest -s 
+```

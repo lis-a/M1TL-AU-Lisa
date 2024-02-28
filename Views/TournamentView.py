@@ -11,7 +11,6 @@ class TournamentView(View):
         self.location = None
         self.name = None
 
-
     def get_tournament_info(self):
         """
         Demande à l'utilisateur de fournir les informations pour un nouveau tournoi.
@@ -45,17 +44,19 @@ class TournamentView(View):
         """
         print("\nSélectionnez un tournoi : ")
         tournaments_reversed = list(reversed(tournaments))
-        for i, tournament in enumerate(tournaments_reversed):
-            registered_players = len(tournament['player_list'])
+        for i, tournoi in enumerate(tournaments_reversed):
+            registered_players = len(tournoi['player_list'])
             print(
-                f"{i + 1} - {tournament['name']} à {tournament['location']} du {tournament['start_date']} au {tournament['end_date']} - Rounds: {tournament['rounds']} - Inscrits: {registered_players}")
+                f"{i + 1} - {tournoi['name']} à {tournoi['location']} du {tournoi['start_date']} au "
+                f"{tournoi['end_date']} - Rounds: {tournoi['rounds']} - Inscrits: {registered_players}")
+
         while True:
             try:
-                tournament_index = int(input("\nEntrez le numéro du tournoi que vous voulez sélectionner : ")) - 1
+                tournament_index = int(input("\nEntrez le numéro du tournoi que vous voulez choisir : ")) - 1
                 if tournament_index < 0 or tournament_index >= len(tournaments):
                     print("Numéro de tournoi invalide. Veuillez entrer un numéro de tournoi valide.")
                 else:
-                    # On retourne l'ID à ne pas confondre avec les options en affichage (pas les mêmes valeurs)
+                    # On retourne l'ID à ne pas confondre avec les options en affichage
                     return tournaments_reversed[tournament_index]['id']
             except ValueError:
                 print("Entrée invalide. Veuillez entrer un numéro.")
